@@ -1,6 +1,11 @@
 void keyboard_handler() {
     uint8_t scancode = inb(0x60); // Read from keyboard port
     char c = scancode_to_ascii(scancode); // Convert scancode to ASCII
+    if (c == '\b') { // Backspace
+        delete_char();
+    } else if (c == '\n') { // Enter
+        process_input();
+    } else {
     print_character(c); // Print the character to the screen
 }
 

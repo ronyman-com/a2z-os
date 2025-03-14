@@ -9,6 +9,10 @@ void paging_install() {
         first_page_table[i] = (i * 0x1000) | 3; // Mark as present and writable
     }
 
+     for (int i = 0; i < 1024; i++) {
+        page_directory[i] = (i * 0x200000) | 0x83; // 2MB pages with present, writable, and large page flags
+    }
+
     page_directory[0] = ((uint32_t)first_page_table) | 3;
 
     // Load the page directory

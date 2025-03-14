@@ -3,6 +3,7 @@
 #include "paging.h"
 #include "fs.h"
 #include "task.h"
+#include "shell.h"
 
 
 void main() {
@@ -11,6 +12,7 @@ void main() {
     paging_install();
     task_switch(); // Example of task switching
     fs_init();
+    shell_run();
     fs_create_file("test.txt", 10, "Hello A2Z");
     asm volatile("sti"); // Enable interrupts
     print_string("A2Z OS: Keyboard interrupt handling enabled!");

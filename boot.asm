@@ -5,6 +5,9 @@ start:
     mov al, 'A'      ; Character to print
     int 0x10         ; Call BIOS interrupt
 
+    mov ax, 0x13
+    int 0x10
+
     mov al, '2'
     int 0x10
 

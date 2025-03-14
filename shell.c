@@ -2,6 +2,12 @@
 #include "string.h"
 
 void shell_execute(char* command) {
+
+    if (strncmp(command, "resolution ", 11) == 0) {
+            uint32_t width = atoi(command + 11);
+            uint32_t height = atoi(command + 15);
+            set_resolution(width, height);
+        }
     if (strcmp(command, "help") == 0) {
         print_string("Available commands: help, clear, echo");
     } else if (strcmp(command, "clear") == 0) {
@@ -11,6 +17,7 @@ void shell_execute(char* command) {
     } else {
         print_string("Unknown command. Type 'help' for a list of commands.");
     }
+    
 }
 
 void shell_run() {
@@ -21,3 +28,4 @@ void shell_run() {
         shell_execute(input);
     }
 }
+

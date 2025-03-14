@@ -1,3 +1,4 @@
+#include "version.h"
 #include "idt.h"
 #include "keyboard.h"
 #include "paging.h"
@@ -15,6 +16,6 @@ void main() {
     shell_run();
     fs_create_file("test.txt", 10, "Hello A2Z");
     asm volatile("sti"); // Enable interrupts
-    print_string("A2Z OS: Keyboard interrupt handling enabled!");
+    print_string("A2Z Operator System v" A2Z_OS_VERSION " (" A2Z_OS_CODENAME ")");
 }
 
